@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace Moltox\ColumnMultiFilter\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class ColumnMultiFilterCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'column-multi-filter';
 
     public $description = 'My command';
 

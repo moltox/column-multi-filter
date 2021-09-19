@@ -1,17 +1,17 @@
 {
-    "name": ":vendor_slug/:package_slug",
-    "description": ":package_description",
+    "name": "moltox/column-multi-filter",
+    "description": "Filters multiple columns",
     "keywords": [
-        ":vendor_name",
+        "moltox",
         "laravel",
-        ":package_slug"
+        "column-multi-filter"
     ],
-    "homepage": "https://github.com/:vendor_slug/:package_slug",
+    "homepage": "https://github.com/moltox/column-multi-filter",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author@domain.com",
+            "name": "Maik Mueller",
+            "email": "maik@muelleronline.org",
             "role": "Developer"
         }
     ],
@@ -30,13 +30,13 @@
     },
     "autoload": {
         "psr-4": {
-            "VendorName\\Skeleton\\": "src",
-            "VendorName\\Skeleton\\Database\\Factories\\": "database/factories"
+            "Moltox\\ColumnMultiFilter\\": "src",
+            "Moltox\\ColumnMultiFilter\\Database\\Factories\\": "database/factories"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "VendorName\\Skeleton\\Tests\\": "tests"
+            "Moltox\\ColumnMultiFilter\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -49,10 +49,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "VendorName\\Skeleton\\SkeletonServiceProvider"
+                "Moltox\\ColumnMultiFilter\\ColumnMultiFilterServiceProvider"
             ],
             "aliases": {
-                "Skeleton": "VendorName\\Skeleton\\SkeletonFacade"
+                "ColumnMultiFilter": "Moltox\\ColumnMultiFilter\\ColumnMultiFilterFacade"
             }
         }
     },

@@ -69,11 +69,11 @@ function remove_prefix(string $prefix, string $content): string {
 }
 
 function replaceForWindows(): array {
-    return preg_split('/\\r\\n|\\r|\\n/', run('dir /S /B * | findstr /v /i .github | findstr /v /i vendor | findstr /v /i '.basename(__FILE__).' | findstr /r /i /M /F:/ ":author :vendor :package VendorName skeleton vendor_name vendor_slug author@domain.com"'));
+    return preg_split('/\\r\\n|\\r|\\n/', run('dir /S /B * | findstr /v /i .github | findstr /v /i vendor | findstr /v /i '.basename(__FILE__).' | findstr /r /i /M /F:/ ":author :vendor :package VendorName column-multi-filter vendor_name vendor_slug author@domain.com"'));
 }
 
 function replaceForAllOtherOSes(): array {
-    return explode(PHP_EOL, run('grep -E -r -l -i ":author|:vendor|:package|VendorName|skeleton|vendor_name|vendor_slug|author@domain.com" --exclude-dir=vendor ./* ./.github/* | grep -v ' . basename(__FILE__)));
+    return explode(PHP_EOL, run('grep -E -r -l -i ":author|:vendor|:package|VendorName|column-multi-filter|vendor_name|vendor_slug|author@domain.com" --exclude-dir=vendor ./* ./.github/* | grep -v ' . basename(__FILE__)));
 }
 
 $gitName = run('git config user.name');
@@ -121,26 +121,26 @@ $files = (str_starts_with(strtoupper(PHP_OS), 'WIN') ? replaceForWindows() : rep
 
 foreach ($files as $file) {
     replace_in_file($file, [
-        ':author_name' => $authorName,
-        ':author_username' => $authorUsername,
+        'Maik Mueller' => $authorName,
+        'moltox' => $authorUsername,
         'author@domain.com' => $authorEmail,
-        ':vendor_name' => $vendorName,
+        'moltox' => $vendorName,
         ':vendor_slug' => $vendorSlug,
         'VendorName' => $vendorNamespace,
-        ':package_name' => $packageName,
+        'column-multi-filter' => $packageName,
         ':package_slug' => $packageSlug,
-        'Skeleton' => $className,
-        'skeleton' => $packageSlug,
-        ':package_description' => $description,
+        'ColumnMultiFilter' => $className,
+        'column-multi-filter' => $packageSlug,
+        'Filters multiple columns' => $description,
     ]);
 
     match (true) {
-        str_contains($file, 'src/Skeleton.php') => rename($file, './src/' . $className . '.php'),
-        str_contains($file, 'src/SkeletonServiceProvider.php') => rename($file, './src/' . $className . 'ServiceProvider.php'),
-        str_contains($file, 'src/SkeletonFacade.php') => rename($file, './src/' . $className . 'Facade.php'),
-        str_contains($file, 'src/Commands/SkeletonCommand.php') => rename($file, './src/Commands/' . $className . 'Command.php'),
-        str_contains($file, 'database/migrations/create_skeleton_table.php.stub') => rename($file, './database/migrations/create_' . $packageSlugWithoutPrefix . '_table.php.stub'),
-        str_contains($file, 'config/skeleton.php') => rename($file, './config/' . $packageSlugWithoutPrefix . '.php'),
+        str_contains($file, 'src/ColumnMultiFilter.php') => rename($file, './src/' . $className . '.php'),
+        str_contains($file, 'src/ColumnMultiFilterServiceProvider.php') => rename($file, './src/' . $className . 'ServiceProvider.php'),
+        str_contains($file, 'src/ColumnMultiFilterFacade.php') => rename($file, './src/' . $className . 'Facade.php'),
+        str_contains($file, 'src/Commands/ColumnMultiFilterCommand.php') => rename($file, './src/Commands/' . $className . 'Command.php'),
+        str_contains($file, 'database/migrations/create_column_multi_filter_table.php.stub') => rename($file, './database/migrations/create_' . $packageSlugWithoutPrefix . '_table.php.stub'),
+        str_contains($file, 'config/column-multi-filter.php') => rename($file, './config/' . $packageSlugWithoutPrefix . '.php'),
         default => [],
     };
 }
