@@ -146,7 +146,7 @@ trait ColumnMultiFilter
             }
 
         } else {
-            Log::debug('where ..'.print_r([$column, $operator, $value, $logic], true));
+
             $query = $this->addWhereIfValid($query, $column, $operator, $value, $logic);
 
         }
@@ -177,11 +177,10 @@ trait ColumnMultiFilter
     private function addWhereIfValid(Builder $query, string $column, string $operator, string $value, string $logic)
     {
 
-        if (trim($operator) === 'like' && trim($value) === '') {
+        if (trim($value) === '') {
             return $query;
         }
 
-        Log::debug('add where now');
         $query->where($column, $operator, $value, $logic);
 
         return $query;
