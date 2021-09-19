@@ -12,4 +12,9 @@ return [
     'log_channel' => 'default',
 
 
+    // Types
+    // Search
+
+
+
 ];

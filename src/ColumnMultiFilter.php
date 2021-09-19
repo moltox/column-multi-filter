@@ -21,11 +21,12 @@ trait ColumnMultiFilter
     public function scopeMultiFilter(Builder $query): Builder
     {
 
+//Log::debug("Request: " . print_r(request()->all(), true));
         if (request()->has('filter')) {
 
             $filters = request()->get('filter');
 
-            $this->log('Filter found: ' . print_r($filters, true));
+            $this->log('Filter found: '.print_r($filters, true));
 
             return $this->filterQueryBuilder($query, $filters);
 
