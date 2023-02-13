@@ -1,5 +1,6 @@
 {
     "name": "moltox/column-multi-filter",
+    "version": "0.1.1",
     "description": "Filters multiple columns",
     "keywords": [
         "moltox",
