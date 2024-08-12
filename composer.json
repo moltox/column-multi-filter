@@ -1,6 +1,6 @@
 {
     "name": "moltox/column-multi-filter",
-    "version": "9.0.0",
+    "version": "10.0.0",
     "description": "Filters multiple columns",
     "keywords": [
         "moltox",
@@ -17,10 +17,10 @@
         }
     ],
     "require": {
-        "php": "^8.0.2",
+        "php": "^8.1",
         "spatie/laravel-package-tools": "^1.14.0",
-        "illuminate/contracts": "^9.0",
-        "illuminate/database": "^9.0"
+        "illuminate/contracts": "^10.0",
+        "illuminate/database": "^10.0"
     },
     "require-dev": {
         "laravel/pint": "^1.0",
